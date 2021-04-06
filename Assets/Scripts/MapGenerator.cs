@@ -15,6 +15,8 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] int smoothIterations = 5;
 
+    [SerializeField] float squareSize = 1;
+
     int[,] map;
 
     void Start()
@@ -60,6 +62,9 @@ public class MapGenerator : MonoBehaviour
         {
             SmoothMap();
         }
+
+        MeshGenerator meshGenerator = GetComponent<MeshGenerator>();
+        meshGenerator.GenerateMesh(map, squareSize);
     }
 
     void SmoothMap()
@@ -108,6 +113,7 @@ public class MapGenerator : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        /*
         if (map == null)
         {
             return;
@@ -122,5 +128,6 @@ public class MapGenerator : MonoBehaviour
                 Gizmos.DrawCube(position, Vector3.one);
             }
         }
+        */
     }
 }
